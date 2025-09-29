@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Class Methods Example</title>
+  <style>
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .error {
+      color: red;
+      font-style: italic;
+    }
+
+    button {
+      margin: 5px;
+    }
+  </style>
+
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+  <h2 id="myText">This is some text</h2>
+
+  <button id="addBtn">Add Class</button>
+  <button id="removeBtn">Remove Class</button>
+  <button id="toggleBtn">Toggle Class</button>
+
+  <script>
+    $(document).ready(function() {
+      $("#addBtn").click(function() {
+        $("#myText").addClass("highlight");
+      });
+
+      $("#removeBtn").click(function() {
+        $("#myText").removeClass("highlight");
+      });
+
+      $("#toggleBtn").click(function() {
+        $("#myText").toggleClass("highlight");
+      });
+    });
+  </script>
+
+</body>
+</html>

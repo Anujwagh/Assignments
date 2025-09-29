@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .calculator {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      width: 280px;
+    }
+
+    #display {
+      width: 100%;
+      height: 50px;
+      font-size: 24px;
+      margin-bottom: 15px;
+      text-align: right;
+      padding-right: 10px;
+      box-sizing: border-box;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background-color: #e0e0e0;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #d5d5d5;
+    }
+
+    .operator {
+      background-color: #f9a825;
+      color: white;
+    }
+
+    .operator:hover {
+      background-color: #f57f17;
+    }
+
+    .equal {
+      background-color: #f9a825;
+      color: white;
+      
+    }
+
+    .equal:hover {
+      background-color: #f57f17;
+    }
+
+    .clear {
+      background-color: grey;
+      color: white;
+    }
+
+    .clear:hover {
+      background-color: rgb(99, 90, 90);
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator">
+  <input type="text" id="display" readonly>
+
+  <div class="buttons">
+    <button class="clear">C</button>
+    <button class="operator">/</button>
+    <button class="operator">*</button>
+    <button class="operator">-</button>
+
+    <button>7</button>
+    <button>8</button>
+    <button>9</button>
+    <button class="operator">+</button>
+
+    <button>4</button>
+    <button>5</button>
+    <button>6</button>
+    <button class="equal">=</button>
+
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>.</button>
+
+    <button>%</button>
+    <button>0</button>
+    <button>(</button>
+    <button>)</button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    let expression = "";
+
+    // Handle button clicks
+    $('.buttons button').click(function () {
+      const value = $(this).text();
+
+      if (value === 'C') {
+        expression = '';
+        $('#display').val('');
+      } else if (value === '=') {
+        try {
+          let result = eval(expression);
+          $('#display').val(result);
+          expression = result.toString();
+        } catch (e) {
+          $('#display').val("Error");
+          expression = "";
+        }
+      } else {
+        expression += value;
+        $('#display').val(expression);
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

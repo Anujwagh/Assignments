@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Multiplication Table</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 8px 12px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <label>Number: <input type="text" id="num"></label><br><br>
+  <label>From: <input type="text" id="from"></label><br><br>
+  <label>To: <input type="text" id="to"></label><br><br>
+  
+  <button id="showTable">Show</button>
+
+  <br><br>
+  <div id="result"></div>
+
+  <script>
+    $(document).ready(function() {
+      $('#showTable').click(function() {
+        // Clear previous result
+        $('#result').empty();
+
+        // Read inputs
+        const num = parseInt($('#num').val());
+        const from = parseInt($('#from').val());
+        const to = parseInt($('#to').val());
+
+        // Validate inputs
+        if (isNaN(num) || isNaN(from) || isNaN(to)) {
+          $('#result').text("Please enter valid numbers in all fields.");
+          return;
+        }
+
+        if (from > to) {
+          $('#result').text("'From' should be less than or equal to 'To'.");
+          return;
+        }
+
+        // Create table element
+        const table = $('<table></table>');
+
+        // Generate multiplication rows
+        for (let i = from; i <= to; i++) {
+          const row = $('<tr></tr>');
+          const expressionCell = $('<td></td>').text(`${num} * ${i} =`);
+          const resultCell = $('<td></td>').text(num * i);
+          row.append(expressionCell);
+          row.append(resultCell);
+          table.append(row);
+        }
+
+        // Append table to result div
+        $('#result').append(table);
+      });
+    });
+  </script>
+
+</body>
+</html>

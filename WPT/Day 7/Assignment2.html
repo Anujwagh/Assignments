@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Div Animation with Callbacks</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .box {
+      position: absolute;
+      top: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: red;
+    }
+
+    #leftBox {
+      left: 0;
+      background-color: blue;
+    }
+
+    #rightBox {
+      right: 0;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="leftBox" class="box"></div>
+  <div id="rightBox" class="box"></div>
+
+  <script>
+    let leftBox = document.getElementById("leftBox");
+    let rightBox = document.getElementById("rightBox");
+
+    let leftPos = 0;
+    let rightPos = 0;
+
+    // Animate leftBox to the right
+    let leftInterval = setInterval(() => {
+      leftPos += 5;
+      leftBox.style.left = leftPos + 'px';
+    }, 50); // moves every 50ms
+
+    // Animate rightBox to the left
+    let rightInterval = setInterval(() => {
+      rightPos += 5;
+      rightBox.style.right = rightPos + 'px';
+    }, 50); // moves every 50ms
+
+    // Stop both animations after 5 seconds using setTimeout
+    setTimeout(() => {
+      clearInterval(leftInterval);
+      clearInterval(rightInterval);
+      console.log("Animation stopped after 5 seconds.");
+    }, 5000);
+  </script>
+
+</body>
+</html>

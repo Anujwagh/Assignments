@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery Slide and Other Effects</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    #box {
+      width: 300px;
+      height: 150px;
+      background-color: #3498db;
+      color: white;
+      font-size: 20px;
+      line-height: 150px;
+      text-align: center;
+      margin-bottom: 15px;
+      display: none; /* start hidden */
+    }
+    button {
+      margin: 5px;
+      padding: 8px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="btnSlideDown">Slide Down</button>
+  <button id="btnSlideUp">Slide Up</button>
+  <button id="btnSlideToggle">Slide Toggle</button>
+  <button id="btnFadeToggle">Fade Toggle</button>
+  <button id="btnShow">Show</button>
+  <button id="btnHide">Hide</button>
+
+  <div id="box">Hello! I am a box.</div>
+
+  <script>
+    $(document).ready(function() {
+      $('#btnSlideDown').click(function() {
+        $('#box').slideDown(500);
+      });
+
+      $('#btnSlideUp').click(function() {
+        $('#box').slideUp(500);
+      });
+
+      $('#btnSlideToggle').click(function() {
+        $('#box').slideToggle(500);
+      });
+
+      $('#btnFadeToggle').click(function() {
+        $('#box').fadeToggle(500);
+      });
+
+      $('#btnShow').click(function() {
+        $('#box').show(500);
+      });
+
+      $('#btnHide').click(function() {
+        $('#box').hide(500);
+      });
+    });
+  </script>
+    
+</body>
+</html>

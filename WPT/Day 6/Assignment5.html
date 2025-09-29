@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator with Callbacks</title>
+</head>
+<body>
+
+<h2>Simple Calculator</h2>
+
+<label>Number 1: <input type="number" id="num1"></label><br><br>
+<label>Number 2: <input type="number" id="num2"></label><br><br>
+
+<label>Operation:
+  <select id="operation">
+    <option value="add">Addition (+)</option>
+    <option value="sub">Subtraction (-)</option>
+    <option value="mul">Multiply (×)</option>
+    <option value="div">Division (÷)</option>
+  </select>
+</label><br><br>
+
+<button id="calcBtn">Calculate</button>
+
+<h3>Result: <span id="result"></span></h3>
+
+<script>
+  function display(result) {
+    document.getElementById('result').textContent = result;
+  }
+
+  function addition(n1, n2, callback) {
+    const result = n1 + n2;
+    callback(result);
+  }
+
+  function subtraction(n1, n2, callback) {
+    const result = n1 - n2;
+    callback(result);
+  }
+
+  function multiply(n1, n2, callback) {
+    const result = n1 * n2;
+    callback(result);
+  }
+
+  function division(n1, n2, callback) {
+    if (n2 === 0) {
+      callback("Error: Division by zero");
+    } else {
+      const result = n1 / n2;
+      callback(result);
+    }
+  }
+
+  function calculate(n1, n2, operationCallback) {
+    operationCallback(n1, n2, display);
+  }
+
+  document.getElementById('calcBtn').addEventListener('click', () => {
+    const n1 = parseFloat(document.getElementById('num1').value);
+    const n2 = parseFloat(document.getElementById('num2').value);
+    const operation = document.getElementById('operation').value;
+
+    if (isNaN(n1) || isNaN(n2)) {
+      display("Please enter valid numbers.");
+      return;
+    }
+
+    let operationFunc;
+
+    switch (operation) {
+      case 'add':
+        operationFunc = addition;
+        break;
+      case 'sub':
+        operationFunc = subtraction;
+        break;
+      case 'mul':
+        operationFunc = multiply;
+        break;
+      case 'div':
+        operationFunc = division;
+        break;
+      default:
+        display("Invalid operation selected.");
+        return;
+    }
+
+    calculate(n1, n2, operationFunc);
+  });
+</script>
+
+</body>
+</html>

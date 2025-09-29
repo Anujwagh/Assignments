@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Validation Example</title>
+  <style>
+    .error-message {
+      color: red;
+      display: none;
+      font-size: 0.9em;
+    }
+
+    input:invalid + .error-message {
+      display: block;
+    }
+
+    input:valid + .error-message {
+      display: none;
+    }
+
+    form {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <!-- Name Field -->
+    <label for="name">Name (Required, Min 3, Max 15):</label>
+    <input type="text" id="name" name="name" required minlength="3" maxlength="15">
+    <div class="error-message">Please enter a name between 3 and 15 characters.</div>
+
+    <!-- Username Field -->
+    <label for="username">Username (Required, Min 5, Max 12):</label>
+    <input type="text" id="username" name="username" required minlength="5" maxlength="12">
+    <div class="error-message">Username must be 5–12 characters long.</div>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+  </form>
+
+</body>
+</html>

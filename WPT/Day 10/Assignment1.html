@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Ajax Demo</title>
+    <script src="https://fake-json-api.mock.beeceptor.com/users"></script>
+    <style>
+        #output,
+        #result {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            min-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>jQuery Ajax Demo</h2>
+
+    <!-- .load() Example -->
+    <button id="loadBtn">Load Content using .load()</button>
+    <div id="output"></div>
+
+    <!-- $.get() Example -->
+    <button id="getBtn">Get Content using $.get()</button>
+    <div id="result"></div>
+
+    <script>
+        // .load() example
+        $("#loadBtn").click(function () {
+            // This will load the contents of load-content.html into #output
+            $("#output").load("load-content.html");
+        });
+
+        // $.get() example
+        $("#getBtn").click(function () {
+            $.get("get-content.txt", function (data) {
+                $("#result").html(data);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

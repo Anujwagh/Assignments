@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer with setInterval</title>
+</head>
+<body>
+    <h2>Timer: <span id="timer">0</span> seconds</h2>
+
+<script>
+  let count = 0;
+
+  function updateTimer() {
+    count++;
+    document.getElementById("timer").textContent = count;
+  }
+
+  setInterval(updateTimer, 1000);
+</script>
+</body>
+</html>

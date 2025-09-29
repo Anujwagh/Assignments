@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1 id="counter">Counter: 0</h1>
+
+  <script>
+    let count = 0;
+
+    let intervalId = setInterval(() => {
+      count++;
+      document.getElementById('counter').textContent = `Counter: ${count}`;
+      console.log("Counting...", count);
+    }, 1000);
+
+    setTimeout(() => {
+      clearInterval(intervalId);
+      console.log("Stopped counting after 5 seconds.");
+    }, 5000); 
+
+  </script>
+
+</body>
+</html>

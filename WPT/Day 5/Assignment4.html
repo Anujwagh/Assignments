@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Operations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    input[type="number"] {
+      width: 200px;
+      padding: 5px;
+      font-size: 16px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      font-size: 14px;
+    }
+    #output {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Array Operations</h2>
+  
+  <input type="number" id="numberInput" placeholder="Enter a number" />
+  
+  <div>
+    <button onclick="addAtEnd()">Add at End</button>
+    <button onclick="addAtStart()">Add at Start</button>
+    <button onclick="deleteFromEnd()">Delete from End</button>
+    <button onclick="deleteFromStart()">Delete from Start</button>
+    <button onclick="displayOdd()">Display Odd Numbers</button>
+    <button onclick="displayEven()">Display Even Numbers</button>
+  </div>
+  
+  <div id="output"></div>
+
+  <script>
+    let numbers = [];
+
+    function getInputValue() {
+      const input = document.getElementById('numberInput').value;
+      return input ? parseInt(input, 10) : null;
+    }
+
+    function updateOutput(message) {
+      document.getElementById('output').innerText = message;
+    }
+
+    function addAtEnd() {
+      const num = getInputValue();
+      if (num !== null) {
+        numbers.push(num);
+        updateOutput(`Array: [${numbers.join(', ')}]`);
+      } else {
+        alert("Please enter a valid number.");
+      }
+    }
+
+    function addAtStart() {
+      const num = getInputValue();
+      if (num !== null) {
+        numbers.unshift(num);
+        updateOutput(`Array: [${numbers.join(', ')}]`);
+      } else {
+        alert("Please enter a valid number.");
+      }
+    }
+
+    function deleteFromEnd() {
+      if (numbers.length === 0) {
+        updateOutput("Array is already empty.");
+      } else {
+        numbers.pop();
+        updateOutput(`Array: [${numbers.join(', ')}]`);
+      }
+    }
+
+    function deleteFromStart() {
+      if (numbers.length === 0) {
+        updateOutput("Array is already empty.");
+      } else {
+        numbers.shift();
+        updateOutput(`Array: [${numbers.join(', ')}]`);
+      }
+    }
+
+    function displayOdd() {
+      const oddNumbers = numbers.filter(n => n % 2 !== 0);
+      updateOutput(`Odd Numbers: [${oddNumbers.join(', ')}]`);
+    }
+
+    function displayEven() {
+      const evenNumbers = numbers.filter(n => n % 2 === 0);
+      updateOutput(`Even Numbers: [${evenNumbers.join(', ')}]`);
+    }
+  </script>
+
+</body>
+</html>

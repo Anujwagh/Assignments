@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Click Counter</title>
+  <style>
+    /* Style for disabled button */
+    button:disabled {
+      background-color: #ccc;
+      color: #666;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+<button id="clickBtn">Click Me!</button>
+<p>Click count: <span id="clickCount">0</span></p>
+
+<script>
+  const button = document.getElementById('clickBtn');
+  const countDisplay = document.getElementById('clickCount');
+  let count = 0;
+
+  button.addEventListener('click', () => {
+    count++;
+    countDisplay.textContent = count;
+
+    if (count >= 10) {
+      button.disabled = true;  
+    }
+  });
+</script>
+
+</body>
+</html>

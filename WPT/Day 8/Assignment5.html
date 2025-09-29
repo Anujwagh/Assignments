@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Print Multiple Lines on Click</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    p {
+      cursor: pointer;
+      white-space: pre-line; /* important to show new lines */
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="myParagraph">Click me to print multiple lines</p>
+
+  <script>
+    $(document).ready(function() {
+      $('#myParagraph').click(function() {
+        const multilineText = "This is line 1.\nThis is line 2.\nThis is line 3.";
+        $(this).text(multilineText);
+      });
+    });
+  </script>
+
+</body>
+</html>

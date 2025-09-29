@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fetch Post by ID</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    table {
+      width: 50%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #333;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    input {
+      padding: 5px;
+      width: 80px;
+    }
+
+    button {
+      padding: 6px 12px;
+    }
+
+    #error {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fetch Post by ID</h1>
+
+  <label for="postId">Enter Post ID:</label>
+  <input type="number" id="postId" min="1" max="100" placeholder="e.g., 5">
+  <button id="fetchBtn">Get Post</button>
+
+  <div id="error"></div>
+
+  <table id="postTable" style="display: none;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+      </tr>
+    </thead>
+    <tbody id="postBody">
+      <!-- Row will be added here -->
+    </tbody>
+  </table>
+
+  <script src="Script1.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+</head>
+<body>
+    <p id="p1"></p>
+    
+    <input type="text" id="n" placeholder="Enter a Number">
+    <button type="button" onclick="addAtStart()">Add at start</button>
+    <button type="button" onclick="add()">Add at end</button>
+    <button type="button" onclick="add()">Add in array</button>
+</body>
+
+<script>
+    const a=[];
+    function add()
+    {
+        let d=document.getElementById("n").value;
+        a.push(d);
+        console.log(a);
+        show();
+    }
+
+    function addAtStart()
+    {
+        let d=document.getElementById("n").value;
+        a.unshift(d);
+        console.log(a);
+        show();
+    }
+
+    function show()
+    {
+        document.getElementById("p1").innerHTML=a;
+    }
+</script>
+</html>
