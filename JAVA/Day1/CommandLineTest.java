@@ -7,7 +7,7 @@ class CommandLineTest{
 		else
 		{
 			int sum=0;
-			for(int i=0;i<=c Integer.parseInt(arg[0]);i++)
+			for(int i=0;i<= Integer.parseInt(arg[0]);i++)
 			{
 				sum=sum + i;
 			}
