@@ -1,4 +1,4 @@
-package com.demo.test1;
+package com.demo.test;
 
 import java.util.List;
 import java.util.Scanner;
@@ -7,7 +7,9 @@ import com.demo.beans.Employee;
 import com.demo.service.EmployeeService;
 import com.demo.service.EmployeeServiceImpl;
 
-public class TestEmployeeMagtSystem {
+
+
+public class TestEmployeeManagementSystem {
 
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
@@ -16,7 +18,7 @@ public class TestEmployeeMagtSystem {
 		do {
 			System.out.println("1. add new employee\n 2. display all\n3. search by id");
 			System.out.println("4. Search by name\n 5. update sal\n6. delete by id\n7. delete by salary\n");
-			System.out.println("8. search by salary \n 9. sort by salary\n10. exit\n choice: ");
+			System.out.println("8. search by salary \n 9. sort by salary\n10. Sort By name\n11. exit\n choice: ");
 			choice=sc.nextInt();
 								
 			switch(choice) {
@@ -53,6 +55,24 @@ public class TestEmployeeMagtSystem {
 					System.out.println("not found");
 				}
 			}
+			case 5->{
+				System.out.println("enetr id for search");
+				int eid=sc.nextInt();
+				System.out.println("enetr sal");
+				double sal=sc.nextDouble();
+				boolean status=eservice.updateById(eid,sal);
+				{
+					if(status) {
+						System.out.println("updated successfully");
+					}
+					else {
+						System.out.println("Not found");
+					}
+						
+				}
+				
+			}
+		
 			case 6->{
 				System.out.println("enetr id for delete");
 				int eid=sc.nextInt();
@@ -63,7 +83,39 @@ public class TestEmployeeMagtSystem {
 					System.out.println("not found");
 				}
 			}
-			case 10->{sc.close();
+			case 7->{
+				System.out.println("Enter salary");
+				double sal=sc.nextDouble();
+				
+				boolean status=eservice.deleteBySalary(sal);
+				if(status) {
+					System.out.println("deleted successfully");
+				}else {
+					System.out.println("not found");
+				}
+				
+			}
+			case 8->{
+				System.out.println("Enter salary");
+				double sal=sc.nextDouble();
+				List<Employee> elist= eservice.searchBySal(sal);
+				if(elist!=null) {
+					elist.forEach(System.out::println);
+					
+				}
+				else {
+					System.out.println("Not found");
+				}
+			}
+			case 9->{
+				List<Employee> lst=eservice.sortBySal();
+				lst.forEach(System.out::println);
+			}
+			case 10->{
+				List<Employee> lst=eservice.sortByName();
+				lst.forEach(System.out::println);
+			}
+			case 11->{sc.close();
 			     System.out.println("Thank ypu for visiting...."); 
 			}
 			default->{
@@ -71,7 +123,7 @@ public class TestEmployeeMagtSystem {
 			}
 			}
 			
-		}while(choice!=10);
+		}while(choice!=11);
 
 	}
 

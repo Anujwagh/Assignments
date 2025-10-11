@@ -2,10 +2,12 @@ package com.demo.dao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.demo.beans.Employee;
+import com.demo.comparators.MyNameComparator;
 
 public class EmployeeDaoImpl implements EmployeeDao {
     static List<Employee> elist;
@@ -58,5 +60,70 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 		return null;
 	}
-
+	@Override
+	public boolean modifyById(int eid, double sal) {
+		int pos=elist.indexOf(new Employee(eid));
+		if(pos!=-1) {
+				Employee e= elist.get(pos);
+				e.setSal(sal);
+		return true;
+	}
+		return false;
+	}
+	@Override
+	public boolean removeBySalary(double sal) {
+		
+		return elist.removeIf(emp->emp.getSal()>sal);
+		
+	}
+	@Override
+	public List<Employee> findBySal(double sal) {
+	   List<Employee> lst= elist.stream()
+	   .filter(emp->emp.getSal()==sal)
+	   .collect(Collectors.toList());
+		if (lst.size()>0) {
+			return lst;
+		}
+		return null;
+	}
+	@Override
+	public List<Employee> sortBySal() {
+		List<Employee> lst=new ArrayList<>();
+		for(Employee e:elist) {
+			lst.add(e);
+		}
+		lst.sort(null);
+		return lst;
+	}
+	@Override
+	public List<Employee> sortByName() {
+		List<Employee> lst=new ArrayList<>();
+		for(Employee e:elist) {
+			lst.add(e);
+		}
+		//lst.sort(new MyNameComparator());
+		Comparator<Employee> c=(o1,o2)->{
+			System.out.println("In functional comparator");
+			return o1.getEname().compareTo(o2.getEname());
+		};
+		lst.sort(c);
+		return lst;
+	}
+	
+	@Override
+	@Override
+	public List<Employee> sortById() {
+		List<Employee> lst=new ArrayList<>();
+		for(Employee e:elist) {
+			lst.add(e);
+		}
+		//lst.sort(new MyNameComparator());
+		Comparator<Employee> c=(o1,o2)->{
+			System.out.println("In functional comparator");
+			return o1.getEname().compareTo(o2.getEname());
+		};
+		lst.sort(c);
+		return lst;
+	}
+	
 }

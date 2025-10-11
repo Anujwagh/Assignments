@@ -2,7 +2,7 @@ package com.demo.beans;
 
 import java.time.LocalDate;
 
-public class Employee {
+public class Employee implements Comparable<Employee> {
    private int empid;
    private String ename;
    private double sal;
@@ -31,7 +31,8 @@ public class Employee {
 		System.out.println("in equals method "+this.empid+"----"+((Employee)obj).empid);
 		return this.empid==((Employee)obj).empid;
 	}
-
+	
+	
 	public int getEmpid() {
 		return empid;
 	}
@@ -67,6 +68,21 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [empid=" + empid + ", ename=" + ename + ", sal=" + sal + ", jdt=" + jdt + "]";
+	}
+
+	@Override
+	public int compareTo(Employee ob) {
+		System.out.println("in compareTo method "+this.empid+"----"+ob.empid);
+		System.out.println("Salary---> "+this.sal+"----"+ob.sal);
+		/*if(this.sal<ob.sal)
+			return -1;
+		else if (this.sal==ob.sal)
+			 return 0;
+		else
+			return 1;*/
+		
+		return (int)(this.sal-ob.sal);
+			
 	}
    
 }
