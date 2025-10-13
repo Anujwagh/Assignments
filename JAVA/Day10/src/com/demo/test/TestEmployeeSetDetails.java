@@ -9,11 +9,6 @@ import com.demo.service.EmployeeService;
 import com.demo.service.EmployeeServiceImpl;
 
 
-
-
-
-
-
 public class TestEmployeeSetDetails {
    public static void main(String[] args) {
 	Scanner sc=new Scanner(System.in);
