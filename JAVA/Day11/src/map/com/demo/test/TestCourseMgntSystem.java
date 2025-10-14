@@ -38,7 +38,7 @@ public class TestCourseMgntSystem {
 			String cname=sc.next();
 			int capacity=cservice.searchByName(cname);
 			if(capacity!=-1) {
-				System.out.println("CourseName : "+cname+"Capacity: "+capacity);
+				System.out.println("CourseName : "+cname+"---"+"Capacity: "+capacity);
 				
 			}else {
 				System.out.println("Not Found");
