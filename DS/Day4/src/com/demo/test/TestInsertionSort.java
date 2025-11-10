@@ -1,0 +1,14 @@
+package com.demo.test;
+
+import com.demo.sorting.InsertionSortAlgo;
+
+public class TestInsertionSort {
+
+	public static void main(String[] args) {
+
+		int[] arr = {21,11,13,22,25,7,10,8,1};
+		//InsertionSortAlgo.insertionSortAscending(arr);
+		InsertionSortAlgo.insertionSortDescending(arr);
+	}
+
+}
